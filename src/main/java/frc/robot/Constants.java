@@ -17,9 +17,9 @@ public final class Constants {
     public static final int kDriverControllerPort = 0;
   }
 
-  // joystick channels
-  public static final int RIGHT_JOYSTICK_CHANNEL = 2;
-  public static final int LEFT_JOYSTICK_CHANNEL = 0;
+  // joystick channels (Can change depending on what computer you're using)
+  public static final int RIGHT_JOYSTICK_CHANNEL = 2; // The channel for the right joystick
+  public static final int LEFT_JOYSTICK_CHANNEL = 0; // The channel for the left joystick 
 
   // Hat joystick 
   public static final int HAT_JOYSTICK_TRIM_POSITION = RIGHT_JOYSTICK_CHANNEL; // Binds the hat joystick used for the drive train to the right joystick (The hatjoystick is Used for precise drive train movements that wouldn't be possible with the regular joystick) 
