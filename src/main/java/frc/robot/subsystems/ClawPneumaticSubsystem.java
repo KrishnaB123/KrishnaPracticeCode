@@ -19,7 +19,7 @@ import frc.robot.Constants;
 public class ClawPneumaticSubsystem extends SubsystemBase {
   /** Creates a new ClawPneumaticSubsystem. */
 
-  public static DoubleSolenoid doubleSolenoid;
+  public DoubleSolenoid doubleSolenoid;
   
 
   public ClawPneumaticSubsystem() {
@@ -32,14 +32,19 @@ public class ClawPneumaticSubsystem extends SubsystemBase {
   }
 
   // Opens Claw
-  public static void setOpen () {
+  public void setOpen () {
     doubleSolenoid.set(Value.kForward); // Sets the double solenoid to open the claw
     
   }
   
   // Closes claw 
-  public static void setClosed () {
+  public void setClosed () {
     doubleSolenoid.set(Value.kReverse); // Sets the double solenoid to close the claw
+  }
+
+  // Switches the current position of the claw (If we are open, then we close and vice versa)
+  public void toggle() {
+    doubleSolenoid.toggle(); // changes current double solenoid value to the opposite value
   }
 
   @Override

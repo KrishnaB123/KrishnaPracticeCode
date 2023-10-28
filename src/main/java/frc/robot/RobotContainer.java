@@ -7,6 +7,8 @@ package frc.robot;
 import frc.robot.Constants.OperatorConstants;
 import frc.robot.commands.Autos;
 import frc.robot.commands.ExampleCommand;
+import frc.robot.subsystems.ArmMotorSubsystem;
+import frc.robot.subsystems.ArmPneumaticSubsystem;
 import frc.robot.subsystems.ExampleSubsystem;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj2.command.Command;
@@ -20,7 +22,15 @@ import edu.wpi.first.wpilibj2.command.button.Trigger;
  * subsystems, commands, and trigger mappings) should be declared here.
  */
 public class RobotContainer {
+
   // The robot's subsystems and commands are defined here...
+
+  // Subsystems are instantiated here
+  public static final ArmMotorSubsystem m_armMotorSubsystem = new ArmMotorSubsytem();
+  public static final ArmPneumaticSubsystem m_armPneumaticSubsytem = new ArmPneumaticSubsystem();
+  public static final ClawPneumaticSubsystem m_clawPneumaticSubsystem = new ClawPneumaticSubsystem();
+
+  // Commands are instantiated here
 
   // Joysticks
   public static final Joystick rightJoystick = new Joystick(Constants.RIGHT_JOYSTICK_CHANNEL); // Creates the right joystick

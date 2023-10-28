@@ -19,8 +19,8 @@ import frc.robot.Constants;
 
 public class ArmPneumaticSubsystem extends SubsystemBase {
 
-  public static DoubleSolenoid doubleSolenoid;
-  public static boolean isExtended;
+  public DoubleSolenoid doubleSolenoid;
+  public boolean isExtended;
 
   /** Creates a new ArmPneumaticSubsystem. */
   public ArmPneumaticSubsystem() {
@@ -35,24 +35,31 @@ public class ArmPneumaticSubsystem extends SubsystemBase {
   }
 
   // Returns getIsExtended
-  public static boolean getIsExtended () {
+  public boolean getIsExtended () {
     return isExtended;
   }
 
   // Retracts the arm pneumatics 
-  public static void retract () {
+  public void retract () {
     // commands solenoid to the reverse position of the solenoid actuator
     // Note: Forward Solenoid position is the same as the retracted position for robot design
     doubleSolenoid.set(Value.kReverse);
     isExtended = false; // Sets isExtended to false
+    
   }
 
   // Extends the arm pneiumatics
-  public static void extend () {
+  public void extend () {
     // commands solenoid to the forward position of the solenoid actuator
     // Note: Forward Solenoid position is the same as the extended position for robot design
     doubleSolenoid.set(Value.kForward);
     isExtended = true; // Sets isExtended to true
+  }
+
+  // Switches current position of the arm to opposite (if we are extended, we retract and vice versa)
+  public void toggle () {
+    doubleSolenoid.toggle(); // Sets the solenoid to the opposite value
+    isExtended = !isExtended; // Sets is extended to the opposite value
   }
 
 
