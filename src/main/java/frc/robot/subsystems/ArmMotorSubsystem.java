@@ -26,7 +26,7 @@ public class ArmMotorSubsystem extends SubsystemBase {
   
   // Sets arm motor speed to pick up a cone
   public static void setArmToCone() {
-    armMotor.set(1, );
+    armMotor.set(1, 0);
   }
 
   // Sets arm motor speed to pick up a cube

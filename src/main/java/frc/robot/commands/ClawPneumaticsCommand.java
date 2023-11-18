@@ -4,21 +4,39 @@
 
 package commands;
 
+import java.util.Timer;
+
 import edu.wpi.first.wpilibj2.command.CommandBase;
+import frc.robot.subsystems.ClawPneumaticSubsystem;
 
 public class ClawPneumaticsCommand extends CommandBase {
+
+  ClawPneumaticSubsystem clawPneumaticSubsystem;
+  private Timer timer;  
+  private double startTime;
+  private double currentTime;
+  private double delay = 0.5; // How much time has to pass in order to call this command again
   /** Creates a new ClawPneumaticsCommand. */
-  public ClawPneumaticsCommand() {
+
+  public ClawPneumaticsCommand(ClawPneumaticSubsystem clawPneumaticSubsystem) {
+    this.clawPneumaticSubsystem = clawPneumaticSubsystem;
     // Use addRequirements() here to declare subsystem dependencies.
+    addRequirements(this.clawPneumaticSubsystem);
   }
 
   // Called when the command is initially scheduled.
   @Override
-  public void initialize() {}
+  public void initialize() {
+    clawPneumaticSubsystem.toggle();
+    timer.start();
+    startTime = timer.get();
+  }
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
-  public void execute() {}
+  public void execute() {
+    currentTime = timer.get();
+  }
 
   // Called once the command ends or is interrupted.
   @Override
@@ -27,6 +45,9 @@ public class ClawPneumaticsCommand extends CommandBase {
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
+    if (currentTime-startTime >= delay) {
+      return true;
+    }
     return false;
   }
 }

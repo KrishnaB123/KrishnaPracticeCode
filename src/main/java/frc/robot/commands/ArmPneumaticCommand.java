@@ -9,24 +9,30 @@ import edu.wpi.first.wpilibj2.command.CommandBase;
 public class ArmPneumaticCommand extends CommandBase {
   
   private ArmPneumaticSubsystem armPneumaticSubsystem;
-  private WaitCommand wait;
+  private Timer timer;  
+  private double startTime;
+  private double currentTime;
+  private double delay = 0.5; // How much time has to pass in order to call this command again
+  
   /** Creates a new ArmPneumaticCommand. */
-  public ArmPneumaticCommand() {
-    armPneumaticSubsystem = new ArmPneumaticCommand();
+  public ArmPneumaticCommand(ArmPneumaticSubsystem armPneumaticSubsystem) {
+    this.armPneumaticSubsystem = armPneumaticSubsystem;
     // Use addRequirements() here to declare subsystem dependencies.
-    addRequirements(armPneumaticSubsystem);
+    addRequirements(this.armPneumaticSubsystem);
   }
 
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
     armPneumaticSubsystem.toggle();
-    wait = new WaitCommand(0.5);
+    startTime = timer.start();
   }
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
-  public void execute() {}
+  public void execute() {
+    currentTime = timer.get();
+  }
 
   // Called once the command ends or is interrupted.
   @Override
@@ -35,6 +41,9 @@ public class ArmPneumaticCommand extends CommandBase {
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
+    if (currentTime-startTime >= delay) {
+      return true;
+    }
     return false;
   }
 }
