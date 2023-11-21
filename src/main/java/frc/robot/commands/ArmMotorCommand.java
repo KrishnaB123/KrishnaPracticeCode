@@ -4,6 +4,7 @@
 
 package frc.robot.commands;
 
+import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.subsystems.ArmMotorSubsystem;
 
@@ -18,7 +19,7 @@ public class ArmMotorCommand extends CommandBase {
   /** Creates a new ArmMotorCommand. */
   public ArmMotorCommand(ArmMotorSubsystem armMotorSubsystem) {
     this.armMotorSubsystem = armMotorSubsystem;
-    addRequirements(ArmMotorSubsystem);
+    addRequirements(armMotorSubsystem);
     // Use addRequirements() here to declare subsystem dependencies.
   }
 
