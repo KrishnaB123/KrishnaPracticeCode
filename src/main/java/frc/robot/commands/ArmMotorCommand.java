@@ -20,6 +20,7 @@ public class ArmMotorCommand extends CommandBase {
   public ArmMotorCommand(ArmMotorSubsystem armMotorSubsystem) {
     this.armMotorSubsystem = armMotorSubsystem;
     addRequirements(this.armMotorSubsystem);
+    timer = new Timer();
     // Use addRequirements() here to declare subsystem dependencies.
   }
 

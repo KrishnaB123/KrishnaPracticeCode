@@ -6,15 +6,15 @@ package frc.robot;
 
 import frc.robot.Constants.OperatorConstants;
 import frc.robot.commands.ArmMotorCommand;
-import frc.robot.commands.Autos;
-import frc.robot.commands.ExampleCommand;
+import frc.robot.commands.ClawPneumaticsCommand;
 import frc.robot.subsystems.ArmMotorSubsystem;
 import frc.robot.subsystems.ArmPneumaticSubsystem;
-import frc.robot.subsystems.ExampleSubsystem;
-import commands.ArmPneumaticCommand;
+import frc.robot.subsystems.ClawPneumaticSubsystem;
+import frc.robot.commands.ArmPneumaticCommand;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
+import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import edu.wpi.first.wpilibj2.command.button.Trigger;
 
 /**
@@ -28,13 +28,13 @@ public class RobotContainer {
   // The robot's subsystems and commands are defined here...
 
   // Subsystems are instantiated here
-  public static final ArmMotorSubsystem m_armMotorSubsystem = new ArmMotorSubsytem();
+  public static final ArmMotorSubsystem m_armMotorSubsystem = new ArmMotorSubsystem();
   public static final ArmPneumaticSubsystem m_armPneumaticSubsytem = new ArmPneumaticSubsystem();
   public static final ClawPneumaticSubsystem m_clawPneumaticSubsystem = new ClawPneumaticSubsystem();
 
   // Commands are instantiated on here
   public static final ArmMotorCommand m_armMotorCommand = new ArmMotorCommand(m_armMotorSubsystem);
-  public static final ArmPneumaticCommand m_armPneumaticCommand = new ArmPneumaticsCommand(m_armPneumaticSubsytem);
+  public static final ArmPneumaticCommand m_armPneumaticCommand = new ArmPneumaticCommand(m_armPneumaticSubsytem);
   public static final ClawPneumaticsCommand m_clawPneumaticsCommand = new ClawPneumaticsCommand(m_clawPneumaticSubsystem);
 
   // Joysticks
@@ -62,22 +62,23 @@ public class RobotContainer {
    */
   private void configureBindings() {
     // Schedule `ExampleCommand` when `exampleCondition` changes to `true`
-    new Trigger(m_exampleSubsystem::exampleCondition)
-        .onTrue(new ExampleCommand(m_exampleSubsystem));
+    // new Trigger(m_exampleSubsystem::exampleCondition)
+    //     .onTrue(new ExampleCommand(m_exampleSubsystem));
 
     // Schedule `exampleMethodCommand` when the Xbox controller's B button is pressed,
     // cancelling on release.
-    m_driverController.b().whileTrue(m_exampleSubsystem.exampleMethodCommand());
+    // m_driverController.b().whileTrue(m_exampleSubsystem.exampleMethodCommand());
 
     // Left Joystick
-    Trigger clawPneumaticToggleButton = new joystickButton(leftJoystick, Constants.CLAW_PNEUMATICS_TOGGLE_BUTTON); // The left trigger
+    Trigger clawPneumaticToggleButton = new JoystickButton(leftJoystick, Constants.CLAW_PNEUMATICS_TOGGLE_BUTTON); // The left trigger
 
     // Right joystick
-    Trigger armPneumaticToggleButton = new joystickButton(rightJoystick, Constants.ARM_PNEUMATICS_TOGGLE_BUTTON); // The right trigger
-    Trigger armMotorButton = new joystickButton(rightJoystick, Constants.ARM_MOTOR_BUTTON); // The 2nd button
+    Trigger armPneumaticToggleButton = new JoystickButton(rightJoystick, Constants.ARM_PNEUMATICS_TOGGLE_BUTTON); // The right trigger
+    Trigger armMotorButton = new JoystickButton(rightJoystick, Constants.ARM_MOTOR_BUTTON); // The 2nd button
 
     clawPneumaticToggleButton.onTrue(m_clawPneumaticsCommand); // Executes the claw pneumatics command when the trigger is pressed once
     armPneumaticToggleButton.onTrue(m_armPneumaticCommand); // Executes the arm pneumatics command when the trigger is pressed once
+    armMotorButton.onTrue(m_armMotorCommand); // Executes the arm motor command when the 2nd button is pressed once
   }
 
   /**
@@ -87,6 +88,6 @@ public class RobotContainer {
    */
   public Command getAutonomousCommand() {
     // An example command will be run in autonomous
-    return Autos.exampleAuto(m_exampleSubsystem);
+    return null;
   }
 }

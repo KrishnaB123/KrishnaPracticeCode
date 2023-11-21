@@ -18,7 +18,7 @@ public final class Constants {
   }
 
   // joystick channels (Can change depending on what computer you're using)
-  public static final int RIGHT_JOYSTICK_CHANNEL = 2; // The channel for the right joystick
+  public static final int RIGHT_JOYSTICK_CHANNEL = 1; // The channel for the right joystick
   public static final int LEFT_JOYSTICK_CHANNEL = 0; // The channel for the left joystick 
 
   // Hat joystick 
