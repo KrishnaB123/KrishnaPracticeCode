@@ -39,5 +39,6 @@ public final class Constants {
   public static final int CLAW_PNEUMATICS_TOGGLE_BUTTON = 1; // The trigger
   // Right Joystick buttons
   public static final int ARM_PNEUMATICS_TOGGLE_BUTTON = 1; // The trigger
+  public static final int ARM_MOTOR_BUTTON = 2; 
 
 }

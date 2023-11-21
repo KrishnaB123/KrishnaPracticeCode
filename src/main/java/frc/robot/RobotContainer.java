@@ -5,6 +5,7 @@
 package frc.robot;
 
 import frc.robot.Constants.OperatorConstants;
+import frc.robot.commands.ArmMotorCommand;
 import frc.robot.commands.Autos;
 import frc.robot.commands.ExampleCommand;
 import frc.robot.subsystems.ArmMotorSubsystem;
@@ -32,6 +33,7 @@ public class RobotContainer {
   public static final ClawPneumaticSubsystem m_clawPneumaticSubsystem = new ClawPneumaticSubsystem();
 
   // Commands are instantiated on here
+  public static final ArmMotorCommand m_armMotorCommand = new ArmMotorCommand(m_armMotorSubsystem);
   public static final ArmPneumaticCommand m_armPneumaticCommand = new ArmPneumaticsCommand(m_armPneumaticSubsytem);
   public static final ClawPneumaticsCommand m_clawPneumaticsCommand = new ClawPneumaticsCommand(m_clawPneumaticSubsystem);
 
@@ -72,7 +74,7 @@ public class RobotContainer {
 
     // Right joystick
     Trigger armPneumaticToggleButton = new joystickButton(rightJoystick, Constants.ARM_PNEUMATICS_TOGGLE_BUTTON); // The right trigger
-
+    Trigger armMotorButton = new joystickButton(rightJoystick, Constants.ARM_MOTOR_BUTTON); // The 2nd button
 
     clawPneumaticToggleButton.onTrue(m_clawPneumaticsCommand); // Executes the claw pneumatics command when the trigger is pressed once
     armPneumaticToggleButton.onTrue(m_armPneumaticCommand); // Executes the arm pneumatics command when the trigger is pressed once
