@@ -25,17 +25,22 @@ public class ArmMotorSubsystem extends SubsystemBase {
   }
   
   // Sets arm motor speed to pick up a cone
-  public static void setArmToCone() {
+  public void setArmToCone() {
     armMotor.set(ControlMode.PercentOutput, 0.2);
   }
 
   // Sets arm motor speed to pick up a cube
-  public static void setArmToCube() {
+  public void setArmToCube() {
     armMotor.set(ControlMode.PercentOutput, 0.2);
   }
 
-  public static void setArmToIdle () {
+  public void setArmToIdle () {
     armMotor.set(ControlMode.PercentOutput, 0.2);
+  }
+
+  // Sets the arm speed to 0 and stops it
+  public void stopArm () {
+    armMotor.set(ControlMode.PercentOutput, 0.0);
   }
 
   @Override
