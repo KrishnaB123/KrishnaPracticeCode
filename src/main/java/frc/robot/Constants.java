@@ -22,9 +22,11 @@ public final class Constants {
   public static final int LEFT_JOYSTICK_CHANNEL = 0; // The channel for the left joystick 
 
   // Hat joystick 
-  public static final int HAT_JOYSTICK_TRIM_POSITION = RIGHT_JOYSTICK_CHANNEL; // Binds the hat joystick used for the drive train to the right joystick (The hatjoystick is Used for precise drive train movements that wouldn't be possible with the regular joystick) 
-  public static final int HAT_JOYSTICK_TRIM_ROTATION_ARM = LEFT_JOYSTICK_CHANNEL; // Binds the hat joystick used for the arm onto the left
-
+  public static final int HAT_JOYSTICK_TRIM_POSITION = LEFT_JOYSTICK_CHANNEL; // Binds the hat joystick used for the drive train to the right joystick (The hatjoystick is Used for precise drive train movements that wouldn't be possible with the regular joystick) 
+  public static final int HAT_JOYSTICK_ARM = RIGHT_JOYSTICK_CHANNEL; // Binds the hat joystick used for the arm onto the left
+  public static final int ARM_UP_BUTTON = 0; // On the hat joystick, the up button has a value of 0
+  public static final int ARM_DOWN_BUTTON = 180; // On the hat joystick, the down button has a value of 180
+  
   // pneumatic constants channels
   public static final int PNEUMATIC_HUB_CANID = 15; // CAN ID for the pneumatics (Used in order for the roborio to know where to interact with the pneumatics)
   public static final int CLAW_OPEN_CHANNEL = 5; // open and close channels for claw pneumatics

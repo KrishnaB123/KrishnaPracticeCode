@@ -47,8 +47,18 @@ public class ArmMotorSubsystem extends SubsystemBase {
   public void periodic() {
     // This method will be called once per scheduler run
 
-    // Joystick hatJoystickArmRotation = (Constants.HAT_JOYSTICK_TRIM_ROTATION_ARM == Constants.LEFT_JOYSTICK_CHANNEL) // If the arm hat joystick is binded to the left joystick...
-    //   ? RobotContainer.leftJoystick // Then it is set to the left joystick
-    //   : RobotContainer.rightJoystick; // If it isn't equal, then the hatjoystick is set to the right joystick
+    Joystick armHatJoystick = (Constants.HAT_JOYSTICK_ARM == Constants.LEFT_JOYSTICK_CHANNEL) // If the arm hat joystick is binded to the left joystick...
+      ? RobotContainer.leftJoystick // Then it is set to the left joystick
+      : RobotContainer.rightJoystick; // If it isn't equal, then the hatjoystick is set to the right joystick
+
+      if (armHatJoystick.getPOV() == Constants.ARM_UP_BUTTON) { // If the hat is being pressed up, move the arm upward using the setArmToIdle method in this subsystem
+        this.setArmToIdle(); 
+      }
+      else if (armHatJoystick.getPOV() == Constants.ARM_DOWN_BUTTON) { // If the hat is being pressed down, move the arm downward
+        armMotor.set(ControlMode.PercentOutput, -0.2);
+      }
+      else { // If the hat isn't being pressed or is being pressed in another direction, don't move the arm
+        this.stopArm(); 
+      }
   }
 }
