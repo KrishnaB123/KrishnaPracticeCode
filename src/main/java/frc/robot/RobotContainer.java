@@ -76,9 +76,9 @@ public class RobotContainer {
     Trigger armPneumaticToggleButton = new JoystickButton(rightJoystick, Constants.ARM_PNEUMATICS_TOGGLE_BUTTON); // The right trigger
     Trigger armMotorButton = new JoystickButton(rightJoystick, Constants.ARM_MOTOR_BUTTON); // The 2nd button
 
-    clawPneumaticToggleButton.onTrue(m_clawPneumaticsCommand); // Executes the claw pneumatics command when the trigger is pressed once
-    armPneumaticToggleButton.onTrue(m_armPneumaticCommand); // Executes the arm pneumatics command when the trigger is pressed once
-    armMotorButton.onTrue(m_armMotorCommand); // Executes the arm motor command when the 2nd button is pressed once
+    clawPneumaticToggleButton.onTrue(new ClawPneumaticsCommand(m_clawPneumaticSubsystem)); // Executes the claw pneumatics command when the trigger is pressed once
+    armPneumaticToggleButton.onTrue(new ArmPneumaticCommand(m_armPneumaticSubsytem)); // Executes the arm pneumatics command when the trigger is pressed once
+    armMotorButton.onTrue(new ArmMotorCommand(m_armMotorSubsystem)); // Executes the arm motor command when the 2nd button is pressed once
   }
 
   /**

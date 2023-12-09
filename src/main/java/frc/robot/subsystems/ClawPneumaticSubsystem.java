@@ -27,8 +27,9 @@ public class ClawPneumaticSubsystem extends SubsystemBase {
     doubleSolenoid = new DoubleSolenoid(
           Constants.PNEUMATIC_HUB_CANID,  // CAN ID for the pneumatics (Used in order for the roborio to know where to interact with the pneumatics)
           PneumaticsModuleType.CTREPCM, // The Pneumatics control module type (CTRE pneumatics control module)
-          Constants.CLAW_CLOSE_CHANNEL, // Close channel value
-          Constants.CLAW_OPEN_CHANNEL); // Open channel value 
+          Constants.CLAW_OPEN_CHANNEL, // Close channel value
+          Constants.CLAW_CLOSE_CHANNEL); // Open channel value 
+    this.setClosed(); // The claw is always closed at the beginning so that we know the current state which allows us to use toggle
   }
 
   // Opens Claw

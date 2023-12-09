@@ -30,7 +30,7 @@ public class ArmPneumaticSubsystem extends SubsystemBase {
       PneumaticsModuleType.CTREPCM, // The Pneumatics control module type (CTRE pneumatics control module)
       Constants.ARM_EXTEND_CHANNEL, // Extend channel value
       Constants.ARM_RETRACT_CHANNEL); // Retract channel value
-
+      this.retract();
       isExtended = doubleSolenoid.get() == Value.kForward; // isExtended is true or false depending if the current doubleSolenoid value is the same as the kForward value
   }
 

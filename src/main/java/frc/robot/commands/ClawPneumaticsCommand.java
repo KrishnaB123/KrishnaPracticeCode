@@ -27,15 +27,18 @@ public class ClawPneumaticsCommand extends CommandBase {
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
+    // System.out.println("Current solenoid value: " + clawPneumaticSubsystem.doubleSolenoid.get());
     clawPneumaticSubsystem.toggle();
     timer.start();
     startTime = timer.get();
+    // System.out.println("clawPneumaticsCommand initialize runs");
   }
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
     currentTime = timer.get();
+    // System.out.println("clawPneumaticsCommand execute runs");
   }
 
   // Called once the command ends or is interrupted.
@@ -46,6 +49,7 @@ public class ClawPneumaticsCommand extends CommandBase {
   @Override
   public boolean isFinished() {
     if (currentTime-startTime >= delay) {
+      // System.out.println("clawPneumaticsCommand isFinished runs");
       return true;
     }
     return false;
